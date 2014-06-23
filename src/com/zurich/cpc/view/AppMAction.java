@@ -1,15 +1,21 @@
 package com.zurich.cpc.view;
 
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-
+import javax.naming.*;
+import java.sql.*;
+import javax.sql.*;
+		
 //import net.viralpatel.contact.controller.ContactManager;
 //import net.viralpatel.contact.model.Contact;
 
 import com.zurich.cpc.controller.*;
 import com.zurich.cpc.model.*;
+import com.mysql.jdbc.Connection;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -37,17 +43,21 @@ public class AppMAction extends ActionSupport {
 	public String useTry(){
 		//linkController.listsql();
 		System.out.println("useTry.....hibernate");
-		List<AppGtlMTb> appGtlMTb=linkController.listsql();
-		
+		List<AppGtlMTb> appGtlMTbList=linkController.listsql();
+
+		if(appGtlMTbList!=null){
+			
+	        for (AppGtlMTb appGtlMTb :appGtlMTbList) { 
+	        	System.out.print("getHostPolicyNo...............................: " +appGtlMTb.getHostPolicyNo());
+			}
+		}else{
+			System.out.print("Null");
+		}
 		
 
-        
-        for (Iterator iterator = appGtlMTb.iterator(); iterator.hasNext();){
-	      	AppGtlMTb result = (AppGtlMTb) iterator.next(); 
-				 System.out.print("getHostPolicyNo: " + result.getHostPolicyNo()); 
-				 System.out.print("getCmpgnCd: " + result.getCmpgnCd()); 
-				 System.out.println("getHostRefProjCd: " + result.getHostRefProjCd()); 
-	      	}		
+
+		
+		
 		return SUCCESS;
 	}
 
