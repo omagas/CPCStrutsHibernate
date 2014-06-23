@@ -6,7 +6,9 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
 
-import com.zurich.cpc.model.*;
+import com.zurich.cpc.model.AppGtlMTb;
+import com.zurich.cpc.model.CalcRefTb;
+
 
 //import net.viralpatel.contact.model.Contact;
 import net.viralpatel.contact.util.HibernateUtil;
@@ -53,6 +55,23 @@ public class CalRefManager extends HibernateUtil{
 		}
 		session.getTransaction().commit();
 		return calcRefTb;
-	}	
+	}
+	
+	public List<AppGtlMTb> getAppGtllist(){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
+		List<AppGtlMTb> appGtlMTb = null;
+		try {
+			
+			appGtlMTb = (List<AppGtlMTb>)session.createQuery("from AppGtlMTb").list();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		session.getTransaction().commit();		
+		
+		return appGtlMTb;
+	}
 	
 }

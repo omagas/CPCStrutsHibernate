@@ -8,6 +8,7 @@ import java.util.Map;
 import net.viralpatel.contact.util.HibernateUtil;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Transaction;
@@ -72,28 +73,36 @@ public class AppMTbDao extends HibernateUtil{
 		tx=session.beginTransaction();
 		try {
 						StringBuffer sql = new StringBuffer();
-						sql.append("SELECT Host_Policy_No,G.Data_ID,Data_ID_Verno from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID   WHERE  1 = 1");
+						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
 								//" Host_Policy_No is not null and Host_Policy_No >= '04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')  order by Host_Policy_No ");
 					    sql.append(" AND Host_Policy_No>='04313554' ");	
 					    SQLQuery query = session.createSQLQuery(sql.toString());
+//					    query.setString("osType","04313554");
+//					    query.addScalar("Host_Policy_No", Hibernate.STRING);
+//					    query.addScalar("Data_ID", Hibernate.STRING);
+//					    query.addScalar("Data_ID_Verno", Hibernate.STRING);
+					    
 				        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
-				        
-				        List result = query.list();	
+
+						//List<Object[]> query = session.createSQLQuery(sql.toString()).setString("osType","04313554").addScalar("Host_Policy_No", Hibernate.STRING).addScalar("Data_ID", Hibernate.STRING).addScalar("Data_ID_Verno", Hibernate.STRING).list();					    
+
+				        List  result = query.list();	
 				        List<AppGtlMTb> resultList = new ArrayList<AppGtlMTb>();
 				        
+
 				        for (Object object :result) {
 				        	//AppGtlMTb appGtlMTbR = new AppGtlMTb();
 				        	Map qqq = (Map) object;
 				        	//appGtlMTb.setHostPolicyNo(String.valueOf(map.get("Host_Policy_No")));
-				            System.out.print("Host_Policy_No: " + String.valueOf((qqq.get("Host_Policy_No")))); 
-				            System.out.print(", Data_ID: " + qqq.get("Data_ID"));
-				            System.out.println(", Data_ID_Verno: " + qqq.get("Data_ID_Verno"));				            
+				            System.out.print("Host_Policy_No: " + qqq.get("Host_Policy_No")); 
+				            //System.out.print(", Data_ID: " + qqq.get("Data_ID"));
+				            //System.out.println(", Data_ID_Verno: " + qqq.get("Data_ID_Verno"));				            
 				        
 				            //appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
 				            //appGtlMTbR.setCmpgnCd("allll065");
 				            //resultList.add(appGtlMTbR);
 				        }	
-				//        
+				        
 				        tx.commit();
 				        
 				        

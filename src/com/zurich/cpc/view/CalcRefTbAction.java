@@ -7,7 +7,10 @@ import java.util.List;
 //import net.viralpatel.contact.model.Contact;
 
 import com.zurich.cpc.controller.*;
-import com.zurich.cpc.model.*;
+import com.zurich.cpc.model.AppGtlMTb;
+import com.zurich.cpc.model.AppMTb;
+import com.zurich.cpc.model.AppGtlMTbId;
+import com.zurich.cpc.model.CalcRefTb;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -15,6 +18,7 @@ public class CalcRefTbAction extends ActionSupport {
 	private static final long serialVersionUID = 9149826260758390019L;
 	private CalcRefTb calcRefTb;
 	private List<CalcRefTb> calcRefTbList;
+	private List<AppGtlMTb> appGtlMTbList;
 	private Long calc_Typ;
 
 	private CalRefManager linkController;
@@ -24,10 +28,19 @@ public class CalcRefTbAction extends ActionSupport {
 		linkController = new CalRefManager();
 	}
 
-	public String execute() {
-		this.calcRefTbList = linkController.list();
+//	public String execute() {
+//		this.calcRefTbList = linkController.list();
+//
+//		return SUCCESS;
+//	}
+	
+	
+	
+	public String AppGtlService() {
+		System.out.println("TEST....AppGtlService");
+		this.appGtlMTbList = linkController.getAppGtllist();
 		return SUCCESS;
-	}
+	}	
 
 //	public String add() {
 //		System.out.println(getContact());

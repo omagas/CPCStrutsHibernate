@@ -22,7 +22,9 @@
   <property name="show_sql">true</property>
   <!-- Drop and re-create the database schema on startup -->
   <property name="hbm2ddl.auto">update</property>
-  <mapping class="com.zurich.cpc.model.CalcRefTb"/>
+  <!-- mapping class="com.zurich.cpc.model.CalcRefTb"/>
+  <mapping class="com.zurich.cpc.model.AppGtlMTb"/>
+  <mapping class="com.zurich.cpc.model.AppMTb"/> -->
 
  </session-factory>
 </hibernate-configuration>

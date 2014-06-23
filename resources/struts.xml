@@ -28,7 +28,9 @@
 			<result name="success">query.jsp</result>
 		</action>
 		
-
+		<action name="queryg" class="com.zurich.cpc.view.CalcRefTbAction" method="AppGtlService">
+			<result name="success">queryGtl.jsp</result>
+		</action>
 		
 		<action name="query3" class="com.zurich.cpc.view.AppMAction" method="useTry">
 			<result name="success">NewFile.jsp</result>
