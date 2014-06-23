@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" extends="struts-default" namespace="/">
+
+		<action name="add" class="net.viralpatel.contact.view.ContactAction"
+			method="add">
+			<result name="success" type="chain">index</result>
+			<result name="input" type="chain">index</result>
+		</action>
+
+		<action name="delete" class="net.viralpatel.contact.view.ContactAction"
+			method="delete">
+			<result name="success" type="chain">index</result>
+		</action>
+
+		<action name="index" class="net.viralpatel.contact.view.ContactAction">
+			<result name="success">index.jsp</result>
+		</action>
+
+		<action name="query" class="com.zurich.cpc.view.CalcRefTbAction">
+			<result name="success">query.jsp</result>
+		</action>
+		
+
+		
+		<action name="query3" class="com.zurich.cpc.view.AppMAction" method="useTry">
+			<result name="success">NewFile.jsp</result>
+		</action>				
+	</package>
+</struts>

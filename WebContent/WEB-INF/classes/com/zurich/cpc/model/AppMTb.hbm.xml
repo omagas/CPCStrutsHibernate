@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014/6/18 ?U?? 04:24:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class catalog="ZWebDB_Trial" name="com.zurich.cpc.model.AppMTb"
+  schema="dbo" table="App_M_Tb">
+  <id name="dataId" type="string">
+   <column length="20" name="Data_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="dataSrcCd" type="string">
+   <column length="2" name="Data_Src_CD" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="prdtCd" type="string">
+   <column length="3" name="Prdt_CD" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="cmpgnCd" type="string">
+   <column length="8" name="Cmpgn_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="pkgeCd" type="string">
+   <column length="3" name="Pkge_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="insuredCustNo" type="java.lang.Integer">
+   <column name="Insured_Cust_No"/>
+  </property>
+  <property generated="never" lazy="false" name="applicantCustNo" type="java.lang.Integer">
+   <column name="Applicant_Cust_No"/>
+  </property>
+  <property generated="never" lazy="false" name="payerCustNo" type="java.lang.Integer">
+   <column name="Payer_Cust_No"/>
+  </property>
+  <property generated="never" lazy="false" name="receiverCustNo" type="java.lang.Integer">
+   <column name="Receiver_Cust_No"/>
+  </property>
+  <property generated="never" lazy="false" name="chlCd" type="string">
+   <column length="4" name="Chl_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="busUnitCd" type="string">
+   <column length="8" name="Bus_Unit_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="agntCd" type="string">
+   <column length="8" name="Agnt_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="agntKindCd" type="string">
+   <column length="3" name="Agnt_Kind_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="agntId" type="string">
+   <column length="15" name="Agnt_ID"/>
+  </property>
+  <property generated="never" lazy="false" name="agntNm" type="string">
+   <column length="60" name="Agnt_Nm"/>
+  </property>
+  <property generated="never" lazy="false" name="agntEmail" type="string">
+   <column length="50" name="Agnt_Email"/>
+  </property>
+  <property generated="never" lazy="false" name="agntGrpNm" type="string">
+   <column length="30" name="Agnt_Grp_Nm"/>
+  </property>
+  <property generated="never" lazy="false" name="intrAgntCd" type="string">
+   <column length="8" name="IntrAgnt_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="intrAgntId" type="string">
+   <column length="15" name="IntrAgnt_ID"/>
+  </property>
+  <property generated="never" lazy="false" name="intrAgntNm" type="string">
+   <column length="60" name="IntrAgnt_Nm"/>
+  </property>
+  <property generated="never" lazy="false" name="intrAgntEmail" type="string">
+   <column length="50" name="IntrAgnt_Email"/>
+  </property>
+  <property generated="never" lazy="false" name="salesCd" type="string">
+   <column length="8" name="Sales_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="salesId" type="string">
+   <column length="15" name="Sales_ID"/>
+  </property>
+  <property generated="never" lazy="false" name="salesNm" type="string">
+   <column length="30" name="Sales_Nm"/>
+  </property>
+  <property generated="never" lazy="false" name="salesEmail" type="string">
+   <column length="50" name="Sales_Email"/>
+  </property>
+  <property generated="never" lazy="false" name="refCalcChnl" type="string">
+   <column length="2" name="Ref_Calc_Chnl"/>
+  </property>
+  <property generated="never" lazy="false" name="collectId" type="string">
+   <column length="2" name="Collect_ID"/>
+  </property>
+  <property generated="never" lazy="false" name="issueBrhCd" type="string">
+   <column length="2" name="Issue_Brh_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="distChlCd" type="string">
+   <column length="3" name="Dist_Chl_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="tgtMktCd" type="string">
+   <column length="3" name="TgtMkt_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="sbu" type="java.lang.Character">
+   <column length="1" name="SBU"/>
+  </property>
+  <property generated="never" lazy="false" name="insEffDt" type="timestamp">
+   <column length="23" name="Ins_Eff_Dt"/>
+  </property>
+  <property generated="never" lazy="false" name="insExpDt" type="timestamp">
+   <column length="23" name="Ins_Exp_Dt"/>
+  </property>
+  <property generated="never" lazy="false" name="insEffTm" type="string">
+   <column length="4" name="Ins_Eff_TM"/>
+  </property>
+  <property generated="never" lazy="false" name="insExpTm" type="string">
+   <column length="4" name="Ins_Exp_TM"/>
+  </property>
+  <property generated="never" lazy="false" name="insDtTm" type="string">
+   <column length="4" name="Ins_Dt_TM"/>
+  </property>
+  <property generated="never" lazy="false" name="incomeDt" type="timestamp">
+   <column length="23" name="Income_Dt"/>
+  </property>
+  <property generated="never" lazy="false" name="incomeId" type="string">
+   <column length="15" name="Income_ID"/>
+  </property>
+  <property generated="never" lazy="false" name="hostProjCd" type="string">
+   <column length="8" name="Host_Proj_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="hostPkgeCd" type="string">
+   <column length="6" name="Host_Pkge_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="totalPrm" type="java.lang.Integer">
+   <column name="Total_Prm"/>
+  </property>
+  <property generated="never" lazy="false" name="allowModMk" type="java.lang.Character">
+   <column length="1" name="Allow_Mod_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="zautoContactMk" type="java.lang.Character">
+   <column length="1" name="ZAuto_Contact_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="elecDocuNm" type="string">
+   <column length="50" name="ElecDocu_Nm"/>
+  </property>
+  <property generated="never" lazy="false" name="elecDocuCreateMk" type="java.lang.Character">
+   <column length="1" name="ElecDocu_Create_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="elecDocuCreateDt" type="timestamp">
+   <column length="23" name="ElecDocu_Create_Dt"/>
+  </property>
+  <property generated="never" lazy="false" name="chlDataNo" type="string">
+   <column length="30" name="Chl_Data_No"/>
+  </property>
+  <property generated="never" lazy="false" name="chlDataTranNo" type="java.lang.Integer">
+   <column name="Chl_Data_TranNo"/>
+  </property>
+  <property generated="never" lazy="false" name="chlUserGrpCd" type="string">
+   <column length="8" name="Chl_UserGrp_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="contactWinNm" type="string">
+   <column length="30" name="Contact_Win_Nm"/>
+  </property>
+  <property generated="never" lazy="false" name="contactWinWay" type="string">
+   <column length="60" name="Contact_Win_Way"/>
+  </property>
+  <property generated="never" lazy="false" name="contactWinEmail" type="string">
+   <column length="50" name="Contact_Win_Email"/>
+  </property>
+  <property generated="never" lazy="false" name="oriDataId" type="string">
+   <column length="20" name="Ori_Data_ID"/>
+  </property>
+  <property generated="never" lazy="false" name="quotMk" type="java.lang.Character">
+   <column length="1" name="Quot_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="inviteMk" type="java.lang.Character">
+   <column length="1" name="Invite_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="autoUwMk" type="java.lang.Character">
+   <column length="1" name="AutoUW_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="manualUwMk" type="java.lang.Character">
+   <column length="1" name="ManualUW_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="cancelMk" type="java.lang.Character">
+   <column length="1" name="Cancel_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntMk" type="java.lang.Character">
+   <column length="1" name="Paymnt_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="issueMk" type="java.lang.Character">
+   <column length="1" name="Issue_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="issueCaMk" type="java.lang.Character">
+   <column length="1" name="IssueCA_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="hostPaymntMthdCd" type="string">
+   <column length="6" name="Host_Paymnt_Mthd_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="settlementFreqCd" type="java.lang.Character">
+   <column length="1" name="Settlement_Freq_CD"/>
+  </property>
+  <property generated="never" lazy="false" name="ownCostMk" type="java.lang.Character">
+   <column length="1" name="Own_Cost_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntEncodeAcnt" type="string">
+   <column length="30" name="Paymnt_Encode_Acnt"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntCardExpYm" type="string">
+   <column length="6" name="Paymnt_Card_ExpYM"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntResultMk" type="java.lang.Character">
+   <column length="1" name="Paymnt_Result_MK"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntTransDt" type="timestamp">
+   <column length="23" name="Paymnt_Trans_Dt"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntQuest" type="string">
+   <column length="50" name="Paymnt_Quest"/>
+  </property>
+  <property generated="never" lazy="false" name="paymntAns" type="string">
+   <column length="50" name="Paymnt_Ans"/>
+  </property>
+  <property generated="never" lazy="false" name="ncccReplyMsg" type="string">
+   <column length="16" name="NCCC_Reply_Msg"/>
+  </property>
+  <property generated="never" lazy="false" name="ncccTranSeq" type="java.lang.Integer">
+   <column name="NCCC_Tran_Seq"/>
+  </property>
+  <set fetch="select" inverse="true" lazy="true" name="appPdMTbs"
+   sort="unsorted" table="App_PD_M_Tb">
+   <key>
+    <column length="20" name="Data_ID" not-null="true"/>
+   </key>
+   <one-to-many class="com.zurich.sds.gtl.model.AppPdMTb"/>
+  </set>
+ </class>
+</hibernate-mapping>

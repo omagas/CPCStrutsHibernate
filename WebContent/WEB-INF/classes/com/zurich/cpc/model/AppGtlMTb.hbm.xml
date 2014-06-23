@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014/6/18 ?U?? 04:24:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.zurich.cpc.model.AppGtlMTb" table="APP_GTL_M_Tb" schema="dbo" catalog="ZWebDB_Trial">
+        <composite-id name="id" class="com.zurich.cpc.model.AppGtlMTbId">
+            <key-property name="dataId" type="string">
+                <column name="Data_ID" length="20" />
+            </key-property>
+            <key-property name="dataIdVerNo" type="short">
+                <column name="Data_ID_VerNo" />
+            </key-property>
+        </composite-id>
+        <property name="recptNo" type="string">
+            <column name="Recpt_No" length="8" not-null="true" />
+        </property>
+        <property name="cmpgnCd" type="string">
+            <column name="Cmpgn_CD" length="8" />
+        </property>
+        <property name="hostRefProjCd" type="string">
+            <column name="Host_Ref_Proj_CD" length="8" />
+        </property>
+        <property name="tourDays" type="java.lang.Integer">
+            <column name="Tour_Days" />
+        </property>
+        <property name="tourAreaCd" type="string">
+            <column name="TourArea_CD" length="4" />
+        </property>
+        <property name="tourCntyCd" type="string">
+            <column name="TourCnty_CD" />
+        </property>
+        <property name="tourPlaceDesc" type="string">
+            <column name="TourPlace_Desc" />
+        </property>
+        <property name="tourCustCnt" type="java.lang.Integer">
+            <column name="TourCust_Cnt" />
+        </property>
+        <property name="childCustCnt" type="java.lang.Integer">
+            <column name="ChildCust_Cnt" />
+        </property>
+        <property name="agedCustCnt" type="java.lang.Integer">
+            <column name="AgedCust_Cnt" />
+        </property>
+        <property name="adultCustCnt" type="java.lang.Integer">
+            <column name="AdultCust_Cnt" />
+        </property>
+        <property name="childCustPrm" type="java.lang.Integer">
+            <column name="ChildCust_Prm" />
+        </property>
+        <property name="agedCustPrm" type="java.lang.Integer">
+            <column name="AgedCust_Prm" />
+        </property>
+        <property name="adultCustPrm" type="java.lang.Integer">
+            <column name="AdultCust_Prm" />
+        </property>
+        <property name="rskId01Mk" type="java.lang.Character">
+            <column name="RskID_01_MK" length="1" />
+        </property>
+        <property name="rskId01Amt" type="java.lang.Integer">
+            <column name="RskID_01_Amt" />
+        </property>
+        <property name="rskId01Prm" type="java.lang.Integer">
+            <column name="RskID_01_Prm" />
+        </property>
+        <property name="rskId02Mk" type="java.lang.Character">
+            <column name="RskID_02_MK" length="1" />
+        </property>
+        <property name="rskId02Amt" type="java.lang.Integer">
+            <column name="RskID_02_Amt" />
+        </property>
+        <property name="rskId02Prm" type="java.lang.Integer">
+            <column name="RskID_02_Prm" />
+        </property>
+        <property name="rskId03Mk" type="java.lang.Character">
+            <column name="RskID_03_MK" length="1" />
+        </property>
+        <property name="rskId03Amt" type="java.lang.Integer">
+            <column name="RskID_03_Amt" />
+        </property>
+        <property name="rskId03Prm" type="java.lang.Integer">
+            <column name="RskID_03_Prm" />
+        </property>
+        <property name="rskId04Mk" type="java.lang.Character">
+            <column name="RskID_04_MK" length="1" />
+        </property>
+        <property name="rskId04Amt" type="java.lang.Integer">
+            <column name="RskID_04_Amt" />
+        </property>
+        <property name="rskId04Prm" type="java.lang.Integer">
+            <column name="RskID_04_Prm" />
+        </property>
+        <property name="rskId05Mk" type="java.lang.Character">
+            <column name="RskID_05_MK" length="1" />
+        </property>
+        <property name="rskId05Amt" type="java.lang.Integer">
+            <column name="RskID_05_Amt" />
+        </property>
+        <property name="rskId05Prm" type="java.lang.Integer">
+            <column name="RskID_05_Prm" />
+        </property>
+        <property name="rskId06Mk" type="java.lang.Character">
+            <column name="RskID_06_MK" length="1" />
+        </property>
+        <property name="rskId06Amt" type="java.lang.Integer">
+            <column name="RskID_06_Amt" />
+        </property>
+        <property name="rskId06Prm" type="java.lang.Integer">
+            <column name="RskID_06_Prm" />
+        </property>
+        <property name="rskId07Mk" type="java.lang.Character">
+            <column name="RskID_07_MK" length="1" />
+        </property>
+        <property name="rskId07Amt" type="java.lang.Integer">
+            <column name="RskID_07_Amt" />
+        </property>
+        <property name="rskId07Prm" type="java.lang.Integer">
+            <column name="RskID_07_Prm" />
+        </property>
+        <property name="rskId11Mk" type="java.lang.Character">
+            <column name="RskID_11_MK" length="1" />
+        </property>
+        <property name="rskId11Amt" type="java.lang.Integer">
+            <column name="RskID_11_Amt" />
+        </property>
+        <property name="rskId11Prm" type="java.lang.Integer">
+            <column name="RskID_11_Prm" />
+        </property>
+        <property name="rskId12Mk" type="java.lang.Character">
+            <column name="RskID_12_MK" length="1" />
+        </property>
+        <property name="rskId12Amt" type="java.lang.Integer">
+            <column name="RskID_12_Amt" />
+        </property>
+        <property name="rskId12Prm" type="java.lang.Integer">
+            <column name="RskID_12_Prm" />
+        </property>
+        <property name="rskId13Mk" type="java.lang.Character">
+            <column name="RskID_13_MK" length="1" />
+        </property>
+        <property name="rskId13Amt" type="java.lang.Integer">
+            <column name="RskID_13_Amt" />
+        </property>
+        <property name="rskId13Prm" type="java.lang.Integer">
+            <column name="RskID_13_Prm" />
+        </property>
+        <property name="rskId14Mk" type="java.lang.Character">
+            <column name="RskID_14_MK" length="1" />
+        </property>
+        <property name="rskId14Amt" type="java.lang.Integer">
+            <column name="RskID_14_Amt" />
+        </property>
+        <property name="rskId14Prm" type="java.lang.Integer">
+            <column name="RskID_14_Prm" />
+        </property>
+        <property name="rskId15Mk" type="java.lang.Character">
+            <column name="RskID_15_MK" length="1" />
+        </property>
+        <property name="rskId15Amt" type="java.lang.Integer">
+            <column name="RskID_15_Amt" />
+        </property>
+        <property name="rskId15Prm" type="java.lang.Integer">
+            <column name="RskID_15_Prm" />
+        </property>
+        <property name="rskId16Mk" type="java.lang.Character">
+            <column name="RskID_16_MK" length="1" />
+        </property>
+        <property name="rskId16Amt" type="java.lang.Integer">
+            <column name="RskID_16_Amt" />
+        </property>
+        <property name="rskId16Prm" type="java.lang.Integer">
+            <column name="RskID_16_Prm" />
+        </property>
+        <property name="rskId17Mk" type="java.lang.Character">
+            <column name="RskID_17_MK" length="1" />
+        </property>
+        <property name="rskId17Amt" type="java.lang.Integer">
+            <column name="RskID_17_Amt" />
+        </property>
+        <property name="rskId17Prm" type="java.lang.Integer">
+            <column name="RskID_17_Prm" />
+        </property>
+        <property name="rskId18Mk" type="java.lang.Character">
+            <column name="RskID_18_MK" length="1" />
+        </property>
+        <property name="rskId18Amt" type="java.lang.Integer">
+            <column name="RskID_18_Amt" />
+        </property>
+        <property name="rskId18Prm" type="java.lang.Integer">
+            <column name="RskID_18_Prm" />
+        </property>
+        <property name="rskId19Mk" type="java.lang.Character">
+            <column name="RskID_19_MK" length="1" />
+        </property>
+        <property name="rskId19Amt" type="java.lang.Integer">
+            <column name="RskID_19_Amt" />
+        </property>
+        <property name="rskId19Prm" type="java.lang.Integer">
+            <column name="RskID_19_Prm" />
+        </property>
+        <property name="totPrm" type="java.lang.Integer">
+            <column name="Tot_Prm" />
+        </property>
+        <property name="insuredInputTyp" type="string">
+            <column name="Insured_InputTyp" length="2" />
+        </property>
+        <property name="memberListTyp" type="java.lang.Character">
+            <column name="MemberList_Typ" length="1" />
+        </property>
+        <property name="procStatusCd" type="string">
+            <column name="Proc_Status_CD" length="3" />
+        </property>
+        <property name="hostPolicyNo" type="string">
+            <column name="Host_Policy_No" length="8" />
+        </property>
+        <property name="hostPolicyTranNo" type="string">
+            <column name="Host_Policy_TranNo" length="5" />
+        </property>
+        <property name="paymntCardAuthCd" type="string">
+            <column name="Paymnt_Card_Auth_CD" length="8" />
+        </property>
+        <property name="paymntResponseCd" type="string">
+            <column name="Paymnt_Response_CD" length="3" />
+        </property>
+        <property name="paymntResponseMsg" type="string">
+            <column name="Paymnt_Response_Msg" />
+        </property>
+        <property name="paymntTransSeqNo" type="string">
+            <column name="Paymnt_Trans_SeqNo" length="12" />
+        </property>
+        <property name="paymntAuthDt" type="string">
+            <column name="Paymnt_Auth_Dt" length="8" />
+        </property>
+        <property name="paymntCancelMk" type="java.lang.Character">
+            <column name="Paymnt_Cancel_MK" length="1" />
+        </property>
+        <property name="paymntCancelUsrId" type="string">
+            <column name="Paymnt_Cancel_UsrID" length="15" />
+        </property>
+        <property name="paymntCancelDt" type="timestamp">
+            <column name="Paymnt_Cancel_Dt" length="23" />
+        </property>
+        <property name="kycVerNo" type="java.lang.Integer">
+            <column name="KYC_VerNo" />
+        </property>
+        <property name="cmpgnSelMk" type="java.lang.Character">
+            <column name="Cmpgn_Sel_MK" length="1" />
+        </property>
+        <property name="sameInsAmtMk" type="java.lang.Character">
+            <column name="Same_InsAmt_MK" length="1" />
+        </property>
+        <property name="ftpSendMk" type="java.lang.Character">
+            <column name="FTP_Send_MK" length="1" />
+        </property>
+        <property name="prtPcyMk" type="java.lang.Character">
+            <column name="Prt_Pcy_MK" length="1" />
+        </property>
+        <property name="prtRecptMk" type="java.lang.Character">
+            <column name="Prt_Recpt_MK" length="1" />
+        </property>
+        <property name="emailPcyMk" type="java.lang.Character">
+            <column name="Email_Pcy_MK" length="1" />
+        </property>
+        <property name="emailRecptMk" type="java.lang.Character">
+            <column name="Email_Recpt_MK" length="1" />
+        </property>
+        <property name="rapidInputMk" type="java.lang.Character">
+            <column name="RapidInput_MK" length="1" />
+        </property>
+        <property name="riTotPrm" type="java.lang.Integer">
+            <column name="RI_Tot_Prm" />
+        </property>
+        <property name="cpcinputMk" type="java.lang.Character">
+            <column name="CPCInput_MK" length="1" />
+        </property>
+        <property name="mailPcyRecptDt" type="timestamp">
+            <column name="Mail_PcyRecpt_Dt" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>
