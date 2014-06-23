@@ -1,5 +1,7 @@
 package com.zurich.cpc.view;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -34,9 +36,18 @@ public class AppMAction extends ActionSupport {
 	
 	public String useTry(){
 		//linkController.listsql();
-		System.out.println("useTry.....");
+		System.out.println("useTry.....hibernate");
 		List<AppGtlMTb> appGtlMTb=linkController.listsql();
 		
+		
+
+        
+        for (Iterator iterator = appGtlMTb.iterator(); iterator.hasNext();){
+	      	AppGtlMTb result = (AppGtlMTb) iterator.next(); 
+				 System.out.print("getHostPolicyNo: " + result.getHostPolicyNo()); 
+				 System.out.print("getCmpgnCd: " + result.getCmpgnCd()); 
+				 System.out.println("getHostRefProjCd: " + result.getHostRefProjCd()); 
+	      	}		
 		return SUCCESS;
 	}
 
