@@ -23,10 +23,8 @@ public class AppMAction extends ActionSupport {
 	private static final long serialVersionUID = 9149826260758390019L;
 	private AppMTb appMTb;
 	private List<AppMTb> appMTbList;
-
-
 	private AppMTbDao linkController;
-
+	private List<AppGtlMTb> appGtlMTbList;
 	
 
 	public AppMAction() {
@@ -42,13 +40,15 @@ public class AppMAction extends ActionSupport {
 	
 	public String useTry(){
 		//linkController.listsql();
-		System.out.println("useTry.....hibernate");
-		List<AppGtlMTb> appGtlMTbList=linkController.listsql();
-
+		
+		appGtlMTbList=linkController.listsql();
+		
+		
+		
 		if(appGtlMTbList!=null){
 			
 	        for (AppGtlMTb appGtlMTb :appGtlMTbList) { 
-	        	System.out.print("getHostPolicyNo...............................: " +appGtlMTb.getHostPolicyNo());
+	        	System.out.println("getHostPolicyNo...............................: " +appGtlMTb.getHostPolicyNo());
 			}
 		}else{
 			System.out.print("Null");

@@ -71,11 +71,11 @@ public class AppMTbDao extends HibernateUtil{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
 		tx=session.beginTransaction();
-		try {
+	
 						StringBuffer sql = new StringBuffer();
-						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
+						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No,CONVERT(nvarchar(100), G.Data_ID) AS Data_ID,CONVERT(nvarchar(100), Data_ID_Verno) AS Data_ID_Verno from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
 								//" Host_Policy_No is not null and Host_Policy_No >= '04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')  order by Host_Policy_No ");
-					    sql.append(" AND Host_Policy_No>='04313554' ");	
+					    sql.append(" AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')");	
 					    SQLQuery query = session.createSQLQuery(sql.toString());
 //					    query.setString("osType","04313554");
 //					    query.addScalar("Host_Policy_No", Hibernate.STRING);
@@ -89,21 +89,21 @@ public class AppMTbDao extends HibernateUtil{
 				        List  result = query.list();	
 				        List<AppGtlMTb> resultList = new ArrayList<AppGtlMTb>();
 				        
-
 				        for (Object object :result) {
-				        	//AppGtlMTb appGtlMTbR = new AppGtlMTb();
+				        	AppGtlMTb appGtlMTbR = new AppGtlMTb();
 				        	Map qqq = (Map) object;
 				        	//appGtlMTb.setHostPolicyNo(String.valueOf(map.get("Host_Policy_No")));
 				            System.out.print("Host_Policy_No: " + qqq.get("Host_Policy_No")); 
-				            //System.out.print(", Data_ID: " + qqq.get("Data_ID"));
-				            //System.out.println(", Data_ID_Verno: " + qqq.get("Data_ID_Verno"));				            
+				            System.out.print(", Data_ID: " + qqq.get("Data_ID"));
+				            System.out.println(", Data_ID_Verno: " + qqq.get("Data_ID_Verno"));				            
 				        
-				            //appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
+				            appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
+
 				            //appGtlMTbR.setCmpgnCd("allll065");
-				            //resultList.add(appGtlMTbR);
+				            resultList.add(appGtlMTbR);
 				        }	
 				        
-				        tx.commit();
+				        System.out.println("SizeSizeSizeSize:"+resultList.get(0).getHostPolicyNo());
 				        
 				        
 				//            CmpgnRefTb cmpgnRefTb = new CmpgnRefTb();
@@ -114,14 +114,10 @@ public class AppMTbDao extends HibernateUtil{
 				//            cmpgnRefTb.setGtlLimitSchengenMk(String.valueOf(map.get("GTL_Limit_Schengen_MK")));
 				//            resultList.add(cmpgnRefTb);
 				        
-				        //tx.commit();
+
 				//		
 				//        return resultList;
-		} catch (HibernateException e) {
-					if (tx!=null) tx.rollback();
-					e.printStackTrace();
-			
-		}
+
 		
 		return resultList;
 	}	
