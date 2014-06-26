@@ -10,9 +10,27 @@ import java.util.Date;
 public class AppGtlMTb implements java.io.Serializable {
 
 	private AppGtlMTbId id;
+	private String dataid;
+	private Integer dataidverno;
 	private String recptNo;
 	private String cmpgnCd;
 	private String hostRefProjCd;
+	public String getDataid() {
+		return dataid;
+	}
+
+	public void setDataid(String dataid) {
+		this.dataid = dataid;
+	}
+
+	public Integer getDataidverno() {
+		return dataidverno;
+	}
+
+	public void setDataidverno(Integer dataidverno) {
+		this.dataidverno = dataidverno;
+	}
+
 	private Integer tourDays;
 	private String tourAreaCd;
 	private String tourCntyCd;
@@ -98,8 +116,32 @@ public class AppGtlMTb implements java.io.Serializable {
 	private Integer riTotPrm;
 	private Character cpcinputMk;
 	private Date mailPcyRecptDt;
-
+	private String issueBrhCd;
+	
+	private AppMTb app;
+	private String agentCd;
+	
 	public AppGtlMTb() {
+		
+	}
+
+	
+
+
+	public String getIssueBrhCd() {
+		return issueBrhCd;
+	}
+
+	public void setIssueBrhCd(String issueBrhCd) {
+		this.issueBrhCd = issueBrhCd;
+	}
+
+	public String getAgentCd() {
+		return agentCd;
+	}
+
+	public void setAgentCd(String agentCd) {
+		this.agentCd = agentCd;
 	}
 
 	public AppGtlMTb(AppGtlMTbId id, String recptNo) {

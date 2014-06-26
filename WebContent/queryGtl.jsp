@@ -19,6 +19,7 @@
 </head>
 <body>
 
+
 <h1>Manager</h1>
 
 
@@ -30,21 +31,21 @@
 <tr>
 
 	
-	<th>Calc_Typ</th>
-	<th>Calc_Desc</th>
-	<th>Calc_Unit</th>
-	<th>Eff_MK</th>
+	<th>TourCustCnt</th>
+	<th>TourCntyCd</th>
+	<th>TourAreaCd</th>
+	<th>HostPolicyNo</th>
 
 </tr>
-<s:iterator value="appMTbList" var="appMTb">
+<s:iterator value="appGtlMTbList" var="appGtlMTb">
 	<tr>
-		<td><s:property value="agntCd"/></td>
-		<td><s:property value="agntEmail"/></td>
-		<td><s:property value="agntNm"/></td>
-		<td><s:property value="agntId"/></td>
+		<td><s:property value="TourCustCnt"/></td>
+		<td><s:property value="TourCntyCd"/></td>
+		<td><s:property value="TourAreaCd"/></td>
+		<td><s:property value="HostPolicyNo"/></td>
 
 	</tr>	
 </s:iterator>
-</table>
+
 </body>
 </html>

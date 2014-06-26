@@ -41,24 +41,29 @@ public class AppMAction extends ActionSupport {
 	public String useTry(){
 		//linkController.listsql();
 		
-		appGtlMTbList=linkController.listsql();
-		
-		
+		this.appGtlMTbList=linkController.listsql();
 		
 		if(appGtlMTbList!=null){
 			
 	        for (AppGtlMTb appGtlMTb :appGtlMTbList) { 
-	        	System.out.println("getHostPolicyNo...............................: " +appGtlMTb.getHostPolicyNo());
-			}
+	        	System.out.println("getHostPolicyNo1...............................: " +appGtlMTb.getHostPolicyNo());
+	        	//System.out.println("AgentCd...............................: " +appGtlMTb.getAgentCd());
+	        	//System.out.println("Data_ID...............................: " +appGtlMTbId.);
+	        	//System.out.println("Data_ID_Verno...............................: " +appGtlMTb.getHostPolicyNo());
+	        }
 		}else{
 			System.out.print("Null");
 		}
-		
-
-
-		
-		
+				
 		return SUCCESS;
+	}
+
+	public List<AppGtlMTb> getAppGtlMTbList() {
+		return appGtlMTbList;
+	}
+
+	public void setAppGtlMTbList(List<AppGtlMTb> appGtlMTbList) {
+		this.appGtlMTbList = appGtlMTbList;
 	}
 
 	public AppMTb getAppMTb() {

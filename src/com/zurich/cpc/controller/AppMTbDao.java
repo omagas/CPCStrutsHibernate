@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 import net.viralpatel.contact.util.HibernateUtil;
 
@@ -73,7 +74,14 @@ public class AppMTbDao extends HibernateUtil{
 		tx=session.beginTransaction();
 	
 						StringBuffer sql = new StringBuffer();
-						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No,CONVERT(nvarchar(100), G.Data_ID) AS Data_ID,CONVERT(nvarchar(100), Data_ID_Verno) AS Data_ID_Verno from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
+						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No," +
+								"CONVERT(nvarchar(100), G.Data_ID) AS Data_ID," +
+								"CONVERT(int, Data_ID_Verno) AS Data_ID_Verno," +
+								"Email_Pcy_MK," +
+								"Email_Recpt_MK," +
+								"CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD," +
+								"CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD" +
+								" from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
 								//" Host_Policy_No is not null and Host_Policy_No >= '04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')  order by Host_Policy_No ");
 					    sql.append(" AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')");	
 					    SQLQuery query = session.createSQLQuery(sql.toString());
@@ -88,21 +96,32 @@ public class AppMTbDao extends HibernateUtil{
 
 				        List  result = query.list();	
 				        List<AppGtlMTb> resultList = new ArrayList<AppGtlMTb>();
+				        try{
 				        
-				        for (Object object :result) {
-				        	AppGtlMTb appGtlMTbR = new AppGtlMTb();
-				        	Map qqq = (Map) object;
-				        	//appGtlMTb.setHostPolicyNo(String.valueOf(map.get("Host_Policy_No")));
-				            System.out.print("Host_Policy_No: " + qqq.get("Host_Policy_No")); 
-				            System.out.print(", Data_ID: " + qqq.get("Data_ID"));
-				            System.out.println(", Data_ID_Verno: " + qqq.get("Data_ID_Verno"));				            
+					        for (Object object :result) {
+					        	AppGtlMTb appGtlMTbR = new AppGtlMTb();
+					        	
+					        	Map qqq = (Map) object;
+					        	//appGtlMTb.setHostPolicyNo(String.valueOf(map.get("Host_Policy_No")));
+					            System.out.print("Host_Policy_No: " + qqq.get("Host_Policy_No")); 
+					            System.out.print(", Data_ID: " + qqq.get("Data_ID"));
+					            System.out.println(", Issue_Brh_CD: " + qqq.get("Issue_Brh_CD"));				            
+					        
+					            appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
+					            appGtlMTbR.setDataid(String.valueOf(qqq.get("Data_ID")));
+					            appGtlMTbR.setDataidverno(Integer.parseInt(String.valueOf(((qqq.get("Data_ID_Verno"))))));
+					            appGtlMTbR.setEmailPcyMk(Character.valueOf((Character) qqq.get("Email_Pcy_MK")));
+					            appGtlMTbR.setEmailRecptMk(Character.valueOf((Character) qqq.get("Email_Recpt_MK")));
+					            appGtlMTbR.setAgentCd(String.valueOf(qqq.get("Agnt_CD")));
+					            appGtlMTbR.setIssueBrhCd(String.valueOf(qqq.get("Issue_Brh_CD")));
+					            
+					            resultList.add(appGtlMTbR);
+					        }	
 				        
-				            appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
-
-				            //appGtlMTbR.setCmpgnCd("allll065");
-				            resultList.add(appGtlMTbR);
-				        }	
-				        
+						} catch (HibernateException e) {
+							e.printStackTrace();
+							session.getTransaction().rollback();
+						}
 				        System.out.println("SizeSizeSizeSize:"+resultList.get(0).getHostPolicyNo());
 				        
 				        
