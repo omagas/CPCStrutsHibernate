@@ -34,6 +34,14 @@
 		
 		<action name="query" class="com.zurich.cpc.view.AppMAction" method="useTry">
 			<result name="success">cpcQuery.jsp</result>
-		</action>				
+		</action>			
+		
+		<action name="update" class="com.zurich.cpc.view.AppMAction" method="Update">
+			<!-- 執行進度查詢 會丟回一個JSON -->
+			<!--result type="json">
+				<param name="root">result</param>
+			</result-->
+			<result name="success" >/query</result>
+		</action>	
 	</package>
 </struts>

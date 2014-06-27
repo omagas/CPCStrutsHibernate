@@ -57,6 +57,14 @@ public class AppMAction extends ActionSupport {
 				
 		return SUCCESS;
 	}
+	
+	public String Update(){
+		System.out.print("Success.....Success.....Success.....Success.....Success.....");
+		String hostPolicyNo="07435074";
+		int result=linkController.update(hostPolicyNo);
+		System.out.println("Action...............................: " +result);
+		return SUCCESS;
+	}
 
 	public List<AppGtlMTb> getAppGtlMTbList() {
 		return appGtlMTbList;

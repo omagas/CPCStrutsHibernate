@@ -1,6 +1,8 @@
 package com.zurich.cpc.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +49,58 @@ public class AppMTbDao extends HibernateUtil{
 		session.getTransaction().commit();
 		return appMTb;
 	}
+	
+//	public String update(String hostPolicyNoT) {
+//		Calendar cal = Calendar.getInstance();  
+//		cal.setTime(new Date());
+//		
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		session.beginTransaction();	
+//		try{
+//		   Query q = session.createQuery("from AppGtlMTb where hostPolicyNo = :hostPolicyNo ");
+//		   q.setParameter("hostPolicyNo", hostPolicyNoT);
+//		   AppGtlMTb appGtlMTb = (AppGtlMTb)q.list().get(0);
+//		   appGtlMTb.setMailPcyRecptDt(cal.getTime());
+//		   session.update(appGtlMTb);
+//		}catch(HibernateException e){
+//			e.printStackTrace();
+//			session.getTransaction().rollback();			
+//		}
+//		   
+//		return "sucess";
+//		   
+//	}	
 
+	public int update(String hostPolicyNoT) {
+		int updated = 0;
+		Calendar cal = Calendar.getInstance();  
+		cal.setTime(new Date());
+		Transaction tx = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		tx=session.beginTransaction();	
+
+	
+		try{
+		Query deleteQuery = session.createSQLQuery("update APP_GTL_M_Tb set Mail_PcyRecpt_Dt=getDate()  where Host_Policy_No=?");
+			deleteQuery.setString(0, hostPolicyNoT);
+			updated = deleteQuery.executeUpdate();
+			
+		    System.out.println("hostPolicyNoT"+hostPolicyNoT);
+		    System.out.println("updated"+updated);
+
+		    	session.getTransaction().commit(); 
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+		}
+		   
+		
+		
+		return updated;
+	   
+	}		
+	
 	public List<AppMTb> list() {
 		
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -68,22 +121,11 @@ public class AppMTbDao extends HibernateUtil{
 	public List<AppGtlMTb> listsql() {
 		AppGtlMTb appGtlMTb = new AppGtlMTb();
 		Transaction tx = null;
-		//Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
 		tx=session.beginTransaction();
 	
 						StringBuffer sql = new StringBuffer();
-//						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No," +
-//								"CONVERT(nvarchar(100), G.Data_ID) AS Data_ID," +
-//								"CONVERT(int, Data_ID_Verno) AS Data_ID_Verno," +
-//								"Email_Pcy_MK," +
-//								"Email_Recpt_MK," +
-//								"CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD," +
-//								"CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD" +
-//								" from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
-//								//" Host_Policy_No is not null and Host_Policy_No >= '04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')  order by Host_Policy_No ");
-//					    sql.append(" AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')");	
 						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No,CONVERT(nvarchar(100), G.Data_ID) AS Data_ID,CONVERT(int,G. Data_ID_Verno) AS Data_ID_Verno,Email_Pcy_MK,Email_Recpt_MK,CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD,CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD,CONVERT(nvarchar(100),C.Cust_ID) as Cust_ID,CONVERT(nvarchar(100),C.Cust_EMail) as Cust_EMail " +
 								"from App_GTL_M_Tb G left join Cust_Detail_Tb C on G.Data_id=C.Data_id and G.Data_ID_Verno=C.Data_ID_Verno left join App_M_Tb M on G.Data_ID=M.Data_ID    WHERE 1=1 AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y') and C.Cust_Role_CD='A'");
 						

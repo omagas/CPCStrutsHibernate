@@ -28,12 +28,14 @@
 		}
 	</style>
 	<title>CPC Query</title>
+
 </head>
 <body>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="JavaScript" src="<s:url value="/js/comm.js"/>"></script>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -73,6 +75,7 @@
 	<th></th>
 </tr>
 <s:iterator value="appGtlMTbList" var="appGtlMTb">
+
 	<tr>
 		<td><s:property value="hostPolicyNo"/></td>
 		<td><s:property value="dataid"/></td>
@@ -83,9 +86,11 @@
 		<td><s:property value="issueBrhCd"/></td>
 		<td><s:property value="custid"/></td>
 		<td><s:property value="custemail"/></td>
-		<td><button type="button" class="btn btn-primary">已寄出</button></td>
+		<td><button id="updatebtn" type="button" class="btn btn-primary" >寄出</button></td>
+		<!--  td><a class="linkDelete" >update</a></td-->
+		<td><a class="linkDelete" href="<s:url action='update'/>">delete</a></td>
 	</tr>
-		
+	
 </s:iterator>
 </table>
 </div>        
