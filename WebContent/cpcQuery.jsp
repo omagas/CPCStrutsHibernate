@@ -26,6 +26,9 @@
 		  padding: 40px 15px;
 		  text-align: center;
 		}
+		  td.hilight {
+		    background-color: yellow;
+		}
 	</style>
 	<title>CPC Query</title>
 
@@ -75,7 +78,7 @@
 	<th></th>
 </tr>
 <s:iterator value="appGtlMTbList" var="appGtlMTb">
-
+<form action="#" method="post">
 	<tr>
 		<td><s:property value="hostPolicyNo"/></td>
 		<td><s:property value="dataid"/></td>
@@ -86,11 +89,12 @@
 		<td><s:property value="issueBrhCd"/></td>
 		<td><s:property value="custid"/></td>
 		<td><s:property value="custemail"/></td>
-		<td><button id="updatebtn" type="button" class="btn btn-primary" >寄出</button></td>
+		<td><button id="updatebtn" type="button" class="btn btn-primary">寄出</button></td>
 		<!--  td><a class="linkDelete" >update</a></td-->
+		<td><s:textfield id="hostPolicy" name="hostPolicyNo"/></td>
 		<td><a class="linkDelete" href="<s:url action='update'/>">delete</a></td>
 	</tr>
-	
+</from>	
 </s:iterator>
 </table>
 </div>        
