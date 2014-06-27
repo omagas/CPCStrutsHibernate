@@ -74,16 +74,20 @@ public class AppMTbDao extends HibernateUtil{
 		tx=session.beginTransaction();
 	
 						StringBuffer sql = new StringBuffer();
-						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No," +
-								"CONVERT(nvarchar(100), G.Data_ID) AS Data_ID," +
-								"CONVERT(int, Data_ID_Verno) AS Data_ID_Verno," +
-								"Email_Pcy_MK," +
-								"Email_Recpt_MK," +
-								"CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD," +
-								"CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD" +
-								" from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
-								//" Host_Policy_No is not null and Host_Policy_No >= '04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')  order by Host_Policy_No ");
-					    sql.append(" AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')");	
+//						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No," +
+//								"CONVERT(nvarchar(100), G.Data_ID) AS Data_ID," +
+//								"CONVERT(int, Data_ID_Verno) AS Data_ID_Verno," +
+//								"Email_Pcy_MK," +
+//								"Email_Recpt_MK," +
+//								"CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD," +
+//								"CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD" +
+//								" from App_GTL_M_Tb G join App_M_Tb M on G.Data_ID=M.Data_ID  WHERE 1=1");
+//								//" Host_Policy_No is not null and Host_Policy_No >= '04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')  order by Host_Policy_No ");
+//					    sql.append(" AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y')");	
+						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No,CONVERT(nvarchar(100), G.Data_ID) AS Data_ID,CONVERT(int,G. Data_ID_Verno) AS Data_ID_Verno,Email_Pcy_MK,Email_Recpt_MK,CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD,CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD,CONVERT(nvarchar(100),C.Cust_ID) as Cust_ID,CONVERT(nvarchar(100),C.Cust_EMail) as Cust_EMail " +
+								"from App_GTL_M_Tb G left join Cust_Detail_Tb C on G.Data_id=C.Data_id and G.Data_ID_Verno=C.Data_ID_Verno left join App_M_Tb M on G.Data_ID=M.Data_ID    WHERE 1=1 AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y') and C.Cust_Role_CD='A'");
+						
+						
 					    SQLQuery query = session.createSQLQuery(sql.toString());
 //					    query.setString("osType","04313554");
 //					    query.addScalar("Host_Policy_No", Hibernate.STRING);
@@ -105,7 +109,7 @@ public class AppMTbDao extends HibernateUtil{
 					        	//appGtlMTb.setHostPolicyNo(String.valueOf(map.get("Host_Policy_No")));
 					            System.out.print("Host_Policy_No: " + qqq.get("Host_Policy_No")); 
 					            System.out.print(", Data_ID: " + qqq.get("Data_ID"));
-					            System.out.println(", Issue_Brh_CD: " + qqq.get("Issue_Brh_CD"));				            
+					            System.out.println(", Cust_EMail: " + qqq.get("Cust_EMail"));				            
 					        
 					            appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
 					            appGtlMTbR.setDataid(String.valueOf(qqq.get("Data_ID")));
@@ -114,6 +118,8 @@ public class AppMTbDao extends HibernateUtil{
 					            appGtlMTbR.setEmailRecptMk(Character.valueOf((Character) qqq.get("Email_Recpt_MK")));
 					            appGtlMTbR.setAgentCd(String.valueOf(qqq.get("Agnt_CD")));
 					            appGtlMTbR.setIssueBrhCd(String.valueOf(qqq.get("Issue_Brh_CD")));
+					            appGtlMTbR.setCustid(String.valueOf(qqq.get("Cust_ID")));
+					            appGtlMTbR.setCustemail(String.valueOf(qqq.get("Cust_EMail")));
 					            
 					            resultList.add(appGtlMTbR);
 					        }	

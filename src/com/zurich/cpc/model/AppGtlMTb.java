@@ -116,10 +116,14 @@ public class AppGtlMTb implements java.io.Serializable {
 	private Integer riTotPrm;
 	private Character cpcinputMk;
 	private Date mailPcyRecptDt;
-	private String issueBrhCd;
 	
 	private AppMTb app;
 	private String agentCd;
+	private String issueBrhCd;
+	private String custid;
+	private String custemail;
+	
+	
 	
 	public AppGtlMTb() {
 		
@@ -127,6 +131,22 @@ public class AppGtlMTb implements java.io.Serializable {
 
 	
 
+
+	public String getCustid() {
+		return custid;
+	}
+
+	public void setCustid(String custid) {
+		this.custid = custid;
+	}
+
+	public String getCustemail() {
+		return custemail;
+	}
+
+	public void setCustemail(String custemail) {
+		this.custemail = custemail;
+	}
 
 	public String getIssueBrhCd() {
 		return issueBrhCd;
