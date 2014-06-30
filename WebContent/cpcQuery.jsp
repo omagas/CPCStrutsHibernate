@@ -91,13 +91,15 @@
 		<td><s:property value="custemail"/></td>
 		<td><button id="updatebtn" type="button" class="btn btn-primary">寄出</button></td>
 		<!--  td><a class="linkDelete" >update</a></td-->
-		<td><input name="tt" value="ttt"></td>
+		
 		<td><s:hidden id="hostPolicy" name="hostPolicyNo"/></td>
 		<td><a class="linkDelete" href="<s:url action='update'/>">delete</a></td>
 	</tr>
 </from>	
 </s:iterator>
+ 
 </table>
+<div id="info" style="color: green;">...</div>
 </div>        
 
 

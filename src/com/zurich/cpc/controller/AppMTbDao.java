@@ -189,7 +189,65 @@ public class AppMTbDao extends HibernateUtil{
 		return resultList;
 	}	
 	
+	
+	public List<AppGtlMTb> listsql(String policyno) {
+		AppGtlMTb appGtlMTb = new AppGtlMTb();
+		Transaction tx = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
+		tx=session.beginTransaction();
+	
+						StringBuffer sql = new StringBuffer();
+						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No,CONVERT(nvarchar(100), G.Data_ID) AS Data_ID,CONVERT(int,G. Data_ID_Verno) AS Data_ID_Verno,Email_Pcy_MK,Email_Recpt_MK,CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD,CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD,CONVERT(nvarchar(100),C.Cust_ID) as Cust_ID,CONVERT(nvarchar(100),C.Cust_EMail) as Cust_EMail " +
+								"from App_GTL_M_Tb G left join Cust_Detail_Tb C on G.Data_id=C.Data_id and G.Data_ID_Verno=C.Data_ID_Verno left join App_M_Tb M on G.Data_ID=M.Data_ID    WHERE 1=1");
+						sql.append(" AND Host_Policy_No='"+policyno+"' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y') and C.Cust_Role_CD='A'");
+						
+					    SQLQuery query = session.createSQLQuery(sql.toString());
+//					    query.setString("osType","04313554");
+//					    query.addScalar("Host_Policy_No", Hibernate.STRING);
+//					    query.addScalar("Data_ID", Hibernate.STRING);
+//					    query.addScalar("Data_ID_Verno", Hibernate.STRING);
+					    
+				        query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+
+						//List<Object[]> query = session.createSQLQuery(sql.toString()).setString("osType","04313554").addScalar("Host_Policy_No", Hibernate.STRING).addScalar("Data_ID", Hibernate.STRING).addScalar("Data_ID_Verno", Hibernate.STRING).list();					    
+
+				        List  result = query.list();	
+				        List<AppGtlMTb> resultList = new ArrayList<AppGtlMTb>();
+				        try{
+				        
+					        for (Object object :result) {
+					        	AppGtlMTb appGtlMTbR = new AppGtlMTb();
+					        	
+					        	Map qqq = (Map) object;
+					        	//appGtlMTb.setHostPolicyNo(String.valueOf(map.get("Host_Policy_No")));
+					            System.out.print("Host_Policy_No: " + qqq.get("Host_Policy_No")); 
+					            System.out.print(", Data_ID: " + qqq.get("Data_ID"));
+					            System.out.println(", Cust_EMail: " + qqq.get("Cust_EMail"));				            
+					        
+					            appGtlMTbR.setHostPolicyNo(String.valueOf(qqq.get("Host_Policy_No")));
+					            appGtlMTbR.setDataid(String.valueOf(qqq.get("Data_ID")));
+					            appGtlMTbR.setDataidverno(Integer.parseInt(String.valueOf(((qqq.get("Data_ID_Verno"))))));
+					            appGtlMTbR.setEmailPcyMk(Character.valueOf((Character) qqq.get("Email_Pcy_MK")));
+					            appGtlMTbR.setEmailRecptMk(Character.valueOf((Character) qqq.get("Email_Recpt_MK")));
+					            appGtlMTbR.setAgentCd(String.valueOf(qqq.get("Agnt_CD")));
+					            appGtlMTbR.setIssueBrhCd(String.valueOf(qqq.get("Issue_Brh_CD")));
+					            appGtlMTbR.setCustid(String.valueOf(qqq.get("Cust_ID")));
+					            appGtlMTbR.setCustemail(String.valueOf(qqq.get("Cust_EMail")));
+					            
+					            resultList.add(appGtlMTbR);
+					        }	
+				        
+						} catch (HibernateException e) {
+							e.printStackTrace();
+							session.getTransaction().rollback();
+						}
+		
+		return resultList;
+	}
+	
+	
+	
 	//Example for nativeSQL
 //	List<Person> peopleWithBooks = session.createSQLQuery(
 //			   "select {p.*}, {b.*} from person p, book b where <complicated join>").
