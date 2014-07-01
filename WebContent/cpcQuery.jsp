@@ -17,7 +17,7 @@
 		}
 		th {
 			height: 40px;
-			background-color: #ffee55;
+			background-color: #ddd;
 		}
 		body {
 		  padding-top: 50px;
@@ -27,7 +27,7 @@
 		  text-align: center;
 		}
 		  td.hilight {
-		    background-color: yellow;
+		    /*background-color: yellow;*/
 		}
 	</style>
 	<title>CPC Query</title>
@@ -40,6 +40,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" language="JavaScript" src="<s:url value="/js/comm.js"/>"></script>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -64,42 +65,53 @@
         <h1>蘇黎世產物保險</h1>
         <p class="lead">CPC 查詢保單收據列印功能</p>
       </div>
-<table class="table table-striped">
-<tr>	
-	<th>HostPolicyNo</th>
-	<th>Data_id</th>
-	<th>Data_id_Ver_No</th>
-	<th>Email_Pcy_MK</th>
-	<th>Email_Recpt_Mk</th>
-	<th>Agnt_CD</th>
-	<th>Issue_Brh_Cd</th>
-	<th>Cust_ID</th>
-	<th>Cust_Email</th>	
-	<th></th>
-</tr>
-<s:iterator value="appGtlMTbList" var="appGtlMTb">
-<form action="#" method="post">
-	<tr>
-		<td><s:property value="hostPolicyNo"/></td>
-		<td><s:property value="dataid"/></td>
-		<td><s:property value="dataidverno"/></td>
-		<td><s:property value="emailPcyMk"/></td>
-		<td><s:property value="emailRecptMk"/></td>
-		<td><s:property value="agentCd"/></td>
-		<td><s:property value="issueBrhCd"/></td>
-		<td><s:property value="custid"/></td>
-		<td><s:property value="custemail"/></td>
-		<td><button id="updatebtn" type="button" class="btn btn-primary">寄出</button></td>
-		<!--  td><a class="linkDelete" >update</a></td-->
-		
-		<td><s:hidden id="hostPolicy" name="hostPolicyNo"/></td>
-		<td><a class="linkDelete" href="<s:url action='update'/>">delete</a></td>
+
+
+
+
+<s:if test="%{appGtlMTbList.size()!=0}">
+	<table class="table table-hover">
+	<tr>	
+		<th>HostPolicyNo</th>
+		<th>Data_id</th>
+		<th>Data_id_Ver_No</th>
+		<th>Email_Pcy_MK</th>
+		<th>Email_Recpt_Mk</th>
+		<th>Agnt_CD</th>
+		<th>Issue_Brh_Cd</th>
+		<th>Cust_ID</th>
+		<th>Cust_Email</th>	
+		<th></th>
+		<th></th>
 	</tr>
-</from>	
-</s:iterator>
+	<s:iterator value="appGtlMTbList" var="appGtlMTb">
+		<form action="#" method="post">
+			<tr>
+				<td><s:property value="hostPolicyNo"/></td>
+				<td><s:property value="dataid"/></td>
+				<td><s:property value="dataidverno"/></td>
+				<td><s:property value="emailPcyMk"/></td>
+				<td><s:property value="emailRecptMk"/></td>
+				<td><s:property value="agentCd"/></td>
+				<td><s:property value="issueBrhCd"/></td>
+				<td><s:property value="custid"/></td>
+				<td><s:property value="custemail"/></td>
+				<td><button id="updatebtn" type="button" class="btn btn-primary">寄出</button></td>
+				<!--  td><a class="linkDelete" >update</a></td-->
+				
+				<td><s:hidden id="hostPolicy" name="hostPolicyNo"/></td>
+				
+			</tr>
+		</from>	   
+	</s:iterator>
+	</table>
+</s:if>	
+<s:else>
+	<div class="alert alert-info" role="alert">查無相符資料，目前無保單收據需列印</div>
+	<!-- div id="info2" style="color: green;">無相符資料</div> --> 
+</s:else>	
  
-</table>
-<div id="info" style="color: green;">...</div>
+
 </div>        
 
 

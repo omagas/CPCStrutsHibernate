@@ -1,13 +1,16 @@
 /**
- * 
+ * author Louie
  */
 
 
 
 $(document).ready(function () {
+	var mode="P"
 	$( "button" ).click(function() {
 		  //$( this ).slideUp();
-		alert($(this).parent().next().children().val());
+		
+		if(mode=="dev"){alert($(this).parent().next().children().val());}//TEST
+		var self=$(this).parent();
 		var policyno=$(this).parent().next().children().val();
 		//$( this ).nextAll("td").slideUp();
 		//$(this).before().slideUp();
@@ -15,18 +18,22 @@ $(document).ready(function () {
             type: "POST",
             dataType: "json",
             url: "ajaxSubmit.action",
-            //contentType: 'application/json',
             async: true,
-            //data: "policyno=" + policyno,
             data: {
                 "policyno"  : policyno,
             },            
             success: function(result){
                 // we have the response
                 if (result.success) {
-                	alert("01"+result.message);
+                	if(mode=="dev"){
+                	alert("success:"+result.result); 	
+                	var arr =self.parent();//TEST
+                	console.log(arr.html());
+                	}
+                	self.parent().slideUp();
+                	
                 } else {
-                    alert("02"+result.message);
+                    alert("not success:"+result.message);
                 }
 
 

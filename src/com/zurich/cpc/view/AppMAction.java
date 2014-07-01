@@ -22,7 +22,9 @@ import com.zurich.cpc.controller.*;
 import com.zurich.cpc.model.*;
 import com.mysql.jdbc.Connection;
 import com.opensymphony.xwork2.ActionSupport;
-
+/**
+ * author Louie
+ */
 
 public class AppMAction extends ActionSupport {
 	private static final long serialVersionUID = 9149826260758390019L;
@@ -35,6 +37,7 @@ public class AppMAction extends ActionSupport {
 	private String policyno;
 	private AppGtlMTb jsonData;
 	private List<AppGtlMTb> appGtlMTbsingle;
+	private int appGtlMTbListsize;
 
 	public AppMAction() {
 		System.out.println("Cquery.....AppMAction....CalcRefTbAction");
@@ -49,18 +52,22 @@ public class AppMAction extends ActionSupport {
 	
 	public String useTry(){
 		//linkController.listsql();
-		
+		this.setAppGtlMTbListsize(0);
+		int count=0;
 		this.appGtlMTbList=linkController.listsql();
 		
 		if(appGtlMTbList!=null){
 			
 	        for (AppGtlMTb appGtlMTb :appGtlMTbList) { 
 	        	System.out.println("getHostPolicyNo1...............................: " +appGtlMTb.getHostPolicyNo());
+	        	count++;
+	        	this.setAppGtlMTbListsize(count);
 	        	//System.out.println("AgentCd...............................: " +appGtlMTb.getAgentCd());
 	        	//System.out.println("Data_ID...............................: " +appGtlMTbId.);
 	        	//System.out.println("Data_ID_Verno...............................: " +appGtlMTb.getHostPolicyNo());
 	        }
 		}else{
+			
 			System.out.print("Null");
 		}
 				
@@ -80,12 +87,13 @@ public class AppMAction extends ActionSupport {
         		
         		
             } else {
-                //ajaxResult = new CustomResultImpl<Object>(false, null, getErrorMassage());
+            	errorMassage="hostPolicyNo is empty update fail";
+                ajaxResult = new CustomResultImpl<Object>(false, null, getErrorMassage());
             	
                 return SUCCESS;
             }
         } catch (Exception e) {
-            //ajaxResult = new CustomResultImpl<Object>(false, null, ExceptionUtils.getStackTrace(e));
+            ajaxResult = new CustomResultImpl<Object>(false, null, ExceptionUtils.getStackTrace(e));
             e.printStackTrace();
             return SUCCESS;
         }
@@ -98,14 +106,12 @@ public class AppMAction extends ActionSupport {
 	        for (AppGtlMTb appGtlMTb :appGtlMTbsingle) { 
 	        	System.out.println("Update getHostPolicyNo1...............................: " +appGtlMTb.getHostPolicyNo());
 	        	//jsonData=appGtlMTb;
-	        	ajaxResult = new CustomResultImpl<Object>(true, "TTTTT", "TTTTT");
-	        	//System.out.println("jsonData...............................: " +jsonData.getHostPolicyNo());
-	        	//System.out.println("Data_ID...............................: " +appGtlMTbId.);
-	        	//System.out.println("Data_ID_Verno...............................: " +appGtlMTb.getHostPolicyNo());
+	        	ajaxResult = new CustomResultImpl<Object>(true, appGtlMTb.getHostPolicyNo(), "HostPolicyNo");
+
 	        }
 		}else{
 			System.out.print("Null");
-			ajaxResult = new CustomResultImpl<Object>(false, null, "null");
+			ajaxResult = new CustomResultImpl<Object>(false, null, "appGtlMTbsingle is null");
 			return SUCCESS;
 		}        
         
@@ -118,6 +124,14 @@ public class AppMAction extends ActionSupport {
 
 	
 	
+	public int getAppGtlMTbListsize() {
+		return appGtlMTbListsize;
+	}
+
+	public void setAppGtlMTbListsize(int appGtlMTbListsize) {
+		this.appGtlMTbListsize = appGtlMTbListsize;
+	}
+
 	public List<AppGtlMTb> getAppGtlMTbsingle() {
 		return appGtlMTbsingle;
 	}

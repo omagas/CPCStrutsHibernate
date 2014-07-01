@@ -5,10 +5,7 @@ package com.zurich.core.model.common.impl;
 
 import com.zurich.core.model.common.CustomResult;
 
-/**
- * @author SUN
- *
- */
+
 public class CustomResultImpl<RESULT extends Object> implements CustomResult<RESULT> {
     private static final long serialVersionUID = 1658761847048593649L;
 

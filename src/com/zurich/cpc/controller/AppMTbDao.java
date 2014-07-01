@@ -127,7 +127,7 @@ public class AppMTbDao extends HibernateUtil{
 	
 						StringBuffer sql = new StringBuffer();
 						sql.append("SELECT CONVERT(nvarchar(100), Host_Policy_No) AS Host_Policy_No,CONVERT(nvarchar(100), G.Data_ID) AS Data_ID,CONVERT(int,G. Data_ID_Verno) AS Data_ID_Verno,Email_Pcy_MK,Email_Recpt_MK,CONVERT(nvarchar(100),M.Agnt_CD) AS Agnt_CD,CONVERT(nvarchar(100),Issue_Brh_CD) AS Issue_Brh_CD,CONVERT(nvarchar(100),C.Cust_ID) as Cust_ID,CONVERT(nvarchar(100),C.Cust_EMail) as Cust_EMail " +
-								"from App_GTL_M_Tb G left join Cust_Detail_Tb C on G.Data_id=C.Data_id and G.Data_ID_Verno=C.Data_ID_Verno left join App_M_Tb M on G.Data_ID=M.Data_ID    WHERE 1=1 AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y') and C.Cust_Role_CD='A'");
+								"from App_GTL_M_Tb G left join Cust_Detail_Tb C on G.Data_id=C.Data_id and G.Data_ID_Verno=C.Data_ID_Verno left join App_M_Tb M on G.Data_ID=M.Data_ID    WHERE 1=1 AND Host_Policy_No>='04313554' and (Email_Pcy_MK='Y' or Email_Recpt_MK='Y') and C.Cust_Role_CD='A' and Mail_PcyRecpt_Dt is NULL");
 						
 						
 					    SQLQuery query = session.createSQLQuery(sql.toString());
@@ -170,7 +170,7 @@ public class AppMTbDao extends HibernateUtil{
 							e.printStackTrace();
 							session.getTransaction().rollback();
 						}
-				        System.out.println("SizeSizeSizeSize:"+resultList.get(0).getHostPolicyNo());
+				        //System.out.println("SizeSizeSizeSize:"+resultList.get(0).getHostPolicyNo());
 				        
 				        
 				//            CmpgnRefTb cmpgnRefTb = new CmpgnRefTb();
