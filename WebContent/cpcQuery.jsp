@@ -22,12 +22,22 @@
 		body {
 		  padding-top: 50px;
 		}
+		.header {
+			text-align: center;
+			font-weight:bold;
+			color: #fff;
+			background: #18bc9c;
+		}
 		.starter-template {
 		  padding: 40px 15px;
 		  text-align: center;
 		}
-		  td.hilight {
+		  td {
 		    /*background-color: yellow;*/
+		    text-align: center;
+		}
+		h1{
+			font-weight: bold;
 		}
 	</style>
 	<title>CPC Query</title>
@@ -39,6 +49,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" language="JavaScript" src="<s:url value="/js/comm.js"/>"></script>
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
       <div class="container">
@@ -53,34 +64,33 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-share-alt">  Home  </span></a></li>
+            <li class="active"><a href="query"><span class="glyphicon glyphicon-share-alt">  Home  </span></a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
       </div>
 </div>
-<div class="container">
-
+<div class="header">
       <div class="starter-template">
+      	<!--  img class="img-responsive" src="img/logo.png" alt="">-->
         <h1>蘇黎世產物保險</h1>
         <p class="lead">CPC 查詢保單收據列印功能</p>
       </div>
-
-
-
+</div>
+<div class="container">
 
 <s:if test="%{appGtlMTbList.size()!=0}">
 	<table class="table table-hover">
 	<tr>	
-		<th>HostPolicyNo</th>
-		<th>Data_id</th>
-		<th>Data_id_Ver_No</th>
-		<th>Email_Pcy_MK</th>
-		<th>Email_Recpt_Mk</th>
-		<th>Agnt_CD</th>
-		<th>Issue_Brh_Cd</th>
-		<th>Cust_ID</th>
-		<th>Cust_Email</th>	
+		<th>保單序號</th>
+		<th>SDS資料序號</th>
+		<th>SDS資料版號</th>
+		<th>需Email的保單</th>
+		<th>需Email的收據</th>
+		<th>經手人代號</th>
+		<th>出單單位</th>
+		<th>被保險人ID</th>
+		<th>被保險人Email</th>	
 		<th></th>
 		<th></th>
 	</tr>
@@ -96,7 +106,7 @@
 				<td><s:property value="issueBrhCd"/></td>
 				<td><s:property value="custid"/></td>
 				<td><s:property value="custemail"/></td>
-				<td><button id="updatebtn" type="button" class="btn btn-primary">寄出</button></td>
+				<td><button  type="button" class="btn btn-primary">寄出</button></td>
 				<!--  td><a class="linkDelete" >update</a></td-->
 				
 				<td><s:hidden id="hostPolicy" name="hostPolicyNo"/></td>

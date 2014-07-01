@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
 	var mode="P"
-	$( "button" ).click(function() {
+	$( "button.btn" ).click(function() {
 		  //$( this ).slideUp();
 		
 		if(mode=="dev"){alert($(this).parent().next().children().val());}//TEST
