@@ -1,6 +1,8 @@
 StrutsHibernate
 ===============
+Web Framework: struts+hibernate+bootstrap
 
-bootstrap implement in CPC query
+Using Ajax to change the list of CPC Performance System.
+
 
 
